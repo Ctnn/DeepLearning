@@ -25,3 +25,15 @@ else:
   # Transform to a PyTorch tensors and the normalize our valeus between -1 and +1
   transform = transforms.Compose([transforms.ToTensor(),
                                   transforms.Normalize((0.5,), (0.5,))])
+
+  # Load our Training Data and specify what transform to use when loading
+  trainset = torchvision.datasets.MNIST('mnist',
+                                        train=True,
+                                        download=True,
+                                        transform=transform)
+
+  # Load our Test Data and specify what transform to use when loading
+  testset = torchvision.datasets.MNIST('mnist',
+                                       train=False,
+                                       download=True,
+                                       transform=transform)
